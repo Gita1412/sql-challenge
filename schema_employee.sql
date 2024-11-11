@@ -4,53 +4,53 @@
 
 
 CREATE TABLE "department" (
-    "dept_no" VARCHAR(100) NOT NULL,
-    "dept_name" VARCHAR(100) NOT NULL,
+    "dept_no" VARCHAR(20)   NOT NULL,
+    "dept_name" VARCHAR(30)   NOT NULL,
     CONSTRAINT "pk_department" PRIMARY KEY (
         "dept_no"
      )
 );
 
 CREATE TABLE "dept_emp" (
-    "emp_no" VARCHAR(100) NOT NULL,
-    "dept_no" VARCHAR(100) NOT NULL,
+    "emp_no" VARCHAR(20)   NOT NULL,
+    "dept_no" VARCHAR(20)   NOT NULL,
     CONSTRAINT "pk_dept_emp" PRIMARY KEY (
         "emp_no","dept_no"
      )
 );
 
 CREATE TABLE "dept_manager" (
-    "dept_no" VARCHAR(100) NOT NULL,
-    "emp_no" VARCHAR(100) NOT NULL,
+    "dept_no" VARCHAR(20)   NOT NULL,
+    "emp_no" VARCHAR(20)   NOT NULL,
     CONSTRAINT "pk_dept_manager" PRIMARY KEY (
-        "dept_no"
+        "dept_no", "emp_no"
      )
 );
 
 CREATE TABLE "employees" (
-    "emp_no" VARCHAR(100) NOT NULL,
-    "emp_title_id" VARCHAR(100) NOT NULL,
-    "birth_date" DATE NOT NULL,
-    "first_name" vVARCHAR(100) NOT NULL,
-    "last_name" VARCHAR(100) NOT NULL,
-    "sex" VARCHAR(100) NOT NULL,
-    "hire_date" DATE NOT NULL,
+    "emp_no" VARCHAR(20)   NOT NULL,
+    "emp_title_id" VARCHAR(20)   NOT NULL,
+    "birth_date" DATE   NOT NULL,
+    "first_name" VARCHAR(50)   NOT NULL,
+    "last_name" VARCHAR(50)   NOT NULL,
+    "sex" VARCHAR(2)   NOT NULL,
+    "hire_date" DATE   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
      )
 );
 
 CREATE TABLE "salaries" (
-    "emp_no" VARCHAR(100) NOT NULL,
-    "salary" INTEGER NOT NULL,
+    "emp_no" VARCHAR(20)   NOT NULL,
+    "salary" INTEGER   NOT NULL,
     CONSTRAINT "pk_salaries" PRIMARY KEY (
         "emp_no"
      )
 );
 
 CREATE TABLE "titles" (
-    "title_id" VARCHAR(100) NOT NULL,
-    "title" VARCHAR(100) NOT NULL,
+    "title_id" VARCHAR(20)   NOT NULL,
+    "title" VARCHAR(30)   NOT NULL,
     CONSTRAINT "pk_titles" PRIMARY KEY (
         "title_id"
      )
@@ -73,10 +73,3 @@ REFERENCES "titles" ("title_id");
 
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
-
-SELECT * FROM department;
-SELECT * FROM dept_emp;
-SELECT * FROM dept_manager;
-SELECT * FROM employees;
-SELECT * FROM salaries;
-SELECT * FROM titles;
